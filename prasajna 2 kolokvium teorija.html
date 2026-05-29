@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Софтверско Инженерство - Материјали за Колоквиум</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #0071e3;
+            --correct-bg: #e8f5e9;
+            --correct-text: #1b5e20;
+            --correct-border: #4caf50;
+            --header-bg: rgba(255, 255, 255, 0.8);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--header-bg);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.022em;
+        }
+
+        nav {
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        nav::-webkit-scrollbar { display: none; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 4rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 5rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.015em;
+        }
+
+        .part-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 2.5rem 0 1.25rem;
+            border-bottom: 1px solid #e5e5e7;
+            padding-bottom: 0.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .question-text {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option {
+            padding: 0.875rem 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 12px;
+            border: 1px solid #e5e5e7;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option.correct {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-border);
+            color: var(--correct-text);
+            font-weight: 500;
+        }
+
+        .option.correct::before {
+            content: "✓";
+            margin-right: 10px;
+            font-weight: 700;
+        }
+
+        .multiple-badge {
+            display: inline-block;
+            background: #f2f2f7;
+            color: #5856d6;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 1.75rem; }
+            .card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Софтверско Инженерство - Материјали</h1>
+</header>
+
+<nav>
+    <a href="#sec1">1. Архитектура</a>
+    <a href="#sec2">2. Техники Тестирање</a>
+    <a href="#sec3">3. Тестирање Софтвер</a>
+    <a href="#sec4">4. CBSE</a>
+    <a href="#sec5">5. Дизајн & Имплем.</a>
+    <a href="#sec6">6. Еволуција</a>
+</nav>
+
+<main>
+    <!-- SECTION 1 -->
+    <section id="sec1">
+        <h2>1. Дизајн на Архитектура</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+        
+        <div class="card">
+            <div class="question-text">1. Која од следниве реченици најдобро ја опишува улогата на архитектурата во агилните процеси?</div>
+            <div class="options">
+                <div class="option">А) Архитектурата треба да се дизајнира на крајот од развојот за да не го попречува тимот.</div>
+                <div class="option">Б) Архитектурата не е потребна доколку тимот е доволно агилен.</div>
+                <div class="option correct">В) Критично е целокупната архитектура да се постави во раната фаза, бидејќи подоцнежното рефакторирање е скапо.</div>
+                <div class="option">Г) Архитектурата е корисна само за комуникација со клиентите.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Како се нарекува архитектонскиот поглед кој го отсликува однесувањето на системот за време на извршување (runtime), вклучувајќи ги синхронизираните и интерактивните процеси?</div>
+            <div class="options">
+                <div class="option">А) Логички поглед</div>
+                <div class="option">Б) Развоен поглед</div>
+                <div class="option">В) Физички поглед</div>
+                <div class="option correct">Г) Процесен поглед</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. Кој од следниве искази претставува класичен инженерски конфликт (Trade-off) помеѓу две нефункционални барања?</div>
+            <div class="options">
+                <div class="option">А) Сигурноста бара мал број изолирани подсистеми, додека безбедноста бара повеќеслојна архитектура.</div>
+                <div class="option correct">Б) Одржливоста бара ситнозрнести компоненти, додека перформансите бараат крупни компоненти.</div>
+                <div class="option">В) Достапноста бара редундантни компоненти, додека безбедноста бара слоевита архитектура.</div>
+                <div class="option">Г) Перформансите бараат локализација, додека достапноста бара толеранција на грешки.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">4. Во моделот 4+1, кој елемент служи како лепак што ги поврзува и валидира останатите четири погледи?</div>
+            <div class="options">
+                <div class="option">А) Процесниот поглед</div>
+                <div class="option">Б) Развојниот поглед</div>
+                <div class="option">В) Физичкиот поглед</div>
+                <div class="option correct">Г) Сценаријата (+1)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">5. Кој архитектонски шаблон функционира така што податоците течат последователно низ дискретни компоненти за трансформација и е идеален за обработка во серии (batch processing)?</div>
+            <div class="options">
+                <div class="option">А) Model-View-Controller</div>
+                <div class="option">Б) Складиште (Repository)</div>
+                <div class="option correct">В) Цевки и филтри (Pipe and Filter)</div>
+                <div class="option">Г) Клиент-Сервер</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">6. Што претставува „архитектура во мало“ (Architecture in the small)?</div>
+            <div class="options">
+                <div class="option">А) Дистрибуирани корпоративни системи на различни компјутери.</div>
+                <div class="option">Б) Системи кои вклучуваат независни надворешни системи.</div>
+                <div class="option correct">В) Внатрешната структура на индивидуални програми (декомпозиција на класи).</div>
+                <div class="option">Г) Стратегија за градење апликации на ниво на цело претпријатие.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">7. Кој од наведените недостатоци е специфичен за Слоевитата архитектура (Layered Architecture)?</div>
+            <div class="options">
+                <div class="option">А) Централната база е единствена точка на неуспех.</div>
+                <div class="option">Б) Внесува непотребна комплексност кај едноставни системи.</div>
+                <div class="option">В) Силна зависност од стабилноста на компјутерската мрежа.</div>
+                <div class="option correct">Г) Намалени перформанси (overhead) поради секвенцијално поминување низ повеќе нивоа.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">8. Која компонента на компајлерот е одговорна за проверка на логичката смисла на кодот, како на пример компатибилност на типови на податоци?</div>
+            <div class="options">
+                <div class="option">А) Лексички анализатор</div>
+                <div class="option">Б) Синтаксички анализатор</div>
+                <div class="option correct">В) Семантички анализатор</div>
+                <div class="option">Г) Генератор на код</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">9. Кој тип на генеричка апликациска архитектура најчесто се базира на повеќеслојни клиент-сервер архитектури и се користи кај веб-продавници?</div>
+            <div class="options">
+                <div class="option">А) Системи за обработка на настани</div>
+                <div class="option">Б) Апликации за обработка на податоци</div>
+                <div class="option">В) Системи за обработка на јазици</div>
+                <div class="option correct">Г) Апликации за обработка на трансакции</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">10. Што од наведеното е примарна карактеристика на архитектонскиот шаблон „Складиште“ (Repository)?</div>
+            <div class="options">
+                <div class="option">А) Повеќе начини за приказ на исти податоци.</div>
+                <div class="option correct">Б) Независни компоненти пристапуваат исклучиво до една централна база на податоци.</div>
+                <div class="option">В) Серверите нудат услуги на оддалечени клиенти.</div>
+                <div class="option">Г) Хиерархиска поделба на слоеви.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">11. Која од следниве реченици точно ја опишува употребата на Табелата на симболи кај компајлерите?</div>
+            <div class="options">
+                <div class="option">А) Ја претставува структурата на програмата во хиерархиско дрво.</div>
+                <div class="option">Б) Ги трансформира токените во машински код.</div>
+                <div class="option correct">В) Ги содржи сите клучни информации за имињата на ентитетите (променливи, класи).</div>
+                <div class="option">Г) Ја проверува синтаксичката исправност според граматиката.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">12. Зошто архитектурата овозможува „Голема повторна употреба“ (Large-scale reuse)?</div>
+            <div class="options">
+                <div class="option">А) Затоа што го намалува бројот на редундантни компоненти.</div>
+                <div class="option correct">Б) Затоа што архитектурата може да биде пренослива и повторно употреблива низ цела низа сродни системи.</div>
+                <div class="option">В) Затоа што овозможува рана евалуација на барањата.</div>
+                <div class="option">Г) Затоа што служи како заеднички јазик помеѓу засегнатите страни.</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">13. Кои од следниве се предности на експлицитната архитектура?</div>
+            <div class="options">
+                <div class="option correct">А) Комуникација со засегнати страни</div>
+                <div class="option">Б) Гарантира 100% сигурност на кодот</div>
+                <div class="option correct">В) Анализа на системот (рана евалуација)</div>
+                <div class="option correct">Г) Голема повторна употреба</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">14. Според дадениот текст, кои од следниве се витални внатрешни компоненти на еден компајлер?</div>
+            <div class="options">
+                <div class="option">А) Мрежен контролер</div>
+                <div class="option correct">Б) Лексички анализатор</div>
+                <div class="option correct">В) Синтаксичко дрво</div>
+                <div class="option correct">Г) Генератор на код</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">15. Кои од следниве тврдења се точни за шаблонот Model-View-Controller (MVC)?</div>
+            <div class="options">
+                <div class="option correct">А) Се користи кога има повеќе начини за приказ на исти податоци.</div>
+                <div class="option correct">Б) Може да внесе непотребна комплексност кај поедноставни системи.</div>
+                <div class="option">В) Централната база е единствена точка на неуспех.</div>
+                <div class="option correct">Г) Овозможува независна промена на корисничкиот интерфејс без влијание на бизнис логиката.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">16. Во 4+1 моделот, кои од наведените се архитектонски погледи?</div>
+            <div class="options">
+                <div class="option">А) Безбедносен поглед</div>
+                <div class="option correct">Б) Логички поглед</div>
+                <div class="option correct">В) Развоен поглед</div>
+                <div class="option correct">Г) Физички поглед</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="sec2">
+        <h2>2. Техники за Тестирање</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+
+        <div class="card">
+            <div class="question-text">1. Кој од следниве принципи НЕ спаѓа во основните принципи на тестирање според текстот?</div>
+            <div class="options">
+                <div class="option">А) Сите тестови треба да бидат следливи до барањата на клиентот.</div>
+                <div class="option">Б) Тестовите треба да се планираат долго пред да започне тестирањето.</div>
+                <div class="option correct">В) Исцрпното тестирање е секогаш возможно со доволно ресурси.</div>
+                <div class="option">Г) Принципот на Парето се применува на тестирањето (80% од грешките се во 20% од кодот).</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Како се дефинира „Успешен тест“ според академските критериуми во текстот?</div>
+            <div class="options">
+                <div class="option">А) Тест кој поминал без ниту една грешка.</div>
+                <div class="option correct">Б) Тест кој открива сè уште неоткриена грешка.</div>
+                <div class="option">В) Тест кој ги покрива сите можни влезни комбинации.</div>
+                <div class="option">Г) Тест кој е наједноставен за извршување.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. Која техника на тестирање се потпира на детално познавање на внатрешната работа и логика на програмата?</div>
+            <div class="options">
+                <div class="option">А) Black-box тестирање</div>
+                <div class="option">Б) Boundary Value Analysis</div>
+                <div class="option">В) Smoke тестирање</div>
+                <div class="option correct">Г) White-box тестирање</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">4. Што претставува Regression тестирањето?</div>
+            <div class="options">
+                <div class="option">А) Брза дневна проверка на највиталните функции на софтверот.</div>
+                <div class="option correct">Б) Повторно извршување на претходно поминати тестови по секоја промена во кодот.</div>
+                <div class="option">В) Тестирање на вредностите на самите граници на дозволените опсези.</div>
+                <div class="option">Г) Техника за мерење на логичката сложеност на процедуралниот дизајн.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">6. Кој е авторот и годината на развивање на Basis Path тестирањето?</div>
+            <div class="options">
+                <div class="option">А) Boehm, 1981</div>
+                <div class="option correct">Б) McCabe, 1976</div>
+                <div class="option">В) Pareto, 1906</div>
+                <div class="option">Г) Dijkstra, 1968</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">10. Која техника на тестирање е специфично фокусирана на тестирање на вредностите на самите граници на дозволените опсези (мин, макс, мин-1, макс+1)?</div>
+            <div class="options">
+                <div class="option">А) Smoke тестирање</div>
+                <div class="option">Б) Regression тестирање</div>
+                <div class="option">В) Basis Path тестирање</div>
+                <div class="option correct">Г) Boundary Value Analysis (BVA)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">12. Што претставува Smoke тестирањето?</div>
+            <div class="options">
+                <div class="option">А) Тестирање на граничните вредности на опсезите.</div>
+                <div class="option">Б) Повторно тестирање по промени во кодот.</div>
+                <div class="option">В) Мерење на цикломатската сложеност на програмата.</div>
+                <div class="option correct">Г) Брза секојдневна проверка на основните и највитални функции на софтверскиот build.</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">15. Кои од следниве се наведени како лица/улоги кои го извршуваат тестирањето според текстот?</div>
+            <div class="options">
+                <div class="option correct">А) Софтверски инженер</div>
+                <div class="option">Б) Маркетинг менаџер</div>
+                <div class="option correct">В) Клиент</div>
+                <div class="option correct">Г) Специјалисти</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">18. Кои од следниве тврдења се точни за White-box тестирањето?</div>
+            <div class="options">
+                <div class="option">А) Кодот се набљудува како „црна кутија“ од надворешен корисник.</div>
+                <div class="option correct">Б) Се потпира на детално познавање на внатрешната работа на програмата.</div>
+                <div class="option correct">В) Целта е да се осигури дека сите изјави, услови и внатрешни компоненти се извршени барем еднаш.</div>
+                <div class="option">Г) Бара грешки исклучиво во влезовите и излезите.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="sec3">
+        <h2>3. Тестирање на Софтвер</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+
+        <div class="card">
+            <div class="question-text">1. Како академски се дефинира тестирањето на софтвер според текстот?</div>
+            <div class="options">
+                <div class="option">А) Процес на поправање на грешки во кодот.</div>
+                <div class="option correct">Б) Динамички процес на извршување на програма со специфична намера да се пронајдат грешки пред испораката.</div>
+                <div class="option">В) Статичка анализа на кодот без негово извршување.</div>
+                <div class="option">Г) Процес на документирање на корисничките барања.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Која е клучната разлика помеѓу тестирањето и дебагирањето?</div>
+            <div class="options">
+                <div class="option">А) Тестирањето е дијагностички процес, а дебагирањето открива грешки.</div>
+                <div class="option correct">Б) Тестирањето открива грешки, а дебагирањето е дијагностички процес на изолација и корекција.</div>
+                <div class="option">В) Тестирањето и дебагирањето се идентични активности.</div>
+                <div class="option">Г) Дебагирањето се извршува пред тестирањето.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. На кое прашање дава одговор процесот на Валидација (Validation)?</div>
+            <div class="options">
+                <div class="option">А) „Дали го градиме производот правилно?“</div>
+                <div class="option">Б) „Колку чини производот?“</div>
+                <div class="option correct">В) „Дали го градиме вистинскиот производ?“</div>
+                <div class="option">Г) „Кој ќе го тестира производот?“</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">4. Која стратегија за интеграционо тестирање ги поврзува и тестира сите развиени модули одеднаш?</div>
+            <div class="options">
+                <div class="option">А) Top-Down интеграција</div>
+                <div class="option">Б) Bottom-Up интеграција</div>
+                <div class="option">В) Sandwich Testing</div>
+                <div class="option correct">Г) Big Bang пристап</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">6. Кој вид на системско тестирање намерно го принудува софтверот да откаже (crash) за да се провери автоматското обновување?</div>
+            <div class="options">
+                <div class="option">А) Stress Testing</div>
+                <div class="option">Б) Security Testing</div>
+                <div class="option correct">В) Recovery Testing</div>
+                <div class="option">Г) Performance Testing</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">10. Кој вид на системско тестирање ги проверува заштитните механизми против неовластена пенетрација и хакерски напади?</div>
+            <div class="options">
+                <div class="option">А) Stress Testing</div>
+                <div class="option">Б) Deployment Testing</div>
+                <div class="option">В) Recovery Testing</div>
+                <div class="option correct">Г) Security Testing</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">15. Кои од следниве се фундаментални принципи на тестирањето според текстот?</div>
+            <div class="options">
+                <div class="option correct">А) Исцрпното тестирање е математички и временски неостварливо.</div>
+                <div class="option">Б) Тестирањето и дебагирањето се идентични активности.</div>
+                <div class="option correct">В) Сите тестови мора да бидат следливи до корисничките барања.</div>
+                <div class="option correct">Г) Тестирањето започнува на ниво на компонента и работи нанадвор кон целиот систем.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="sec4">
+        <h2>4. Дизајн на Ниво на Компоненти & CBSE</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+
+        <div class="card">
+            <div class="question-text">1. Која е официјалната OMG дефиниција за компонента?</div>
+            <div class="options">
+                <div class="option">А) Збир на класи кои соработуваат во рамки на еден систем.</div>
+                <div class="option correct">Б) Модуларен, распоредлив и заменлив дел од систем кој ја капсулира имплементацијата и изложува интерфејси.</div>
+                <div class="option">В) Логика за обработка и внатрешни податочни структури.</div>
+                <div class="option">Г) Претходно креирана и тестирана каталошка единица од софтверска библиотека.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Кој принцип на дизајн на компоненти вели дека модулите треба да бидат отворени за проширување, но затворени за модификација?</div>
+            <div class="options">
+                <div class="option">А) Liskov Substitution Principle (LSP)</div>
+                <div class="option">Б) Dependency Inversion Principle (DIP)</div>
+                <div class="option">В) Interface Segregation Principle (ISP)</div>
+                <div class="option correct">Г) Open-Closed Principle (OCP)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. Кој тип на кохезија се смета за НАЈДОБАР (најпосакуван) во дизајнот на компоненти?</div>
+            <div class="options">
+                <div class="option">А) Случајна (Coincidental)</div>
+                <div class="option">Б) Комуникациска (Communicational)</div>
+                <div class="option correct">В) Функционална (Functional)</div>
+                <div class="option">Г) Временска (Temporal)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">4. Кој тип на спрега се смета за НАЈЛОША (најнепосакувана) бидејќи една компонента директно ги менува внатрешните податоци на друга?</div>
+            <div class="options">
+                <div class="option">А) Заедничка (Common)</div>
+                <div class="option">Б) Контролна (Control)</div>
+                <div class="option correct">В) Содржинска (Content)</div>
+                <div class="option">Г) Печатна (Stamp/Data-structured)</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">16. Кои од следниве се основни принципи на дизајнот на компоненти?</div>
+            <div class="options">
+                <div class="option correct">А) Open-Closed Principle (OCP)</div>
+                <div class="option">Б) Single Responsibility Principle (SRP)</div>
+                <div class="option correct">В) Liskov Substitution Principle (LSP)</div>
+                <div class="option correct">Г) Interface Segregation Principle (ISP)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="sec5">
+        <h2>5. Дизајн и Имплементација на Софтвер</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+
+        <div class="card">
+            <div class="question-text">1. Која фаза од Објектно-ориентираниот дизајн процес се фокусира на разбирање на врските меѓу софтверот и неговата надворешна околина?</div>
+            <div class="options">
+                <div class="option">А) Архитектонски дизајн</div>
+                <div class="option">Б) Идентификација на објекти</div>
+                <div class="option correct">В) Контекст и интеракција</div>
+                <div class="option">Г) Спецификација на интерфејси</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Што претставува COTS систем во контекст на стратегијата „Изгради или Купи“?</div>
+            <div class="options">
+                <div class="option">А) Специјално развиен софтвер за еден клиент.</div>
+                <div class="option correct">Б) Готов комерцијален систем кој се купува и прилагодува.</div>
+                <div class="option">В) Софтвер со отворен код кој е бесплатен за употреба.</div>
+                <div class="option">Г) Прототип систем за тестирање на барања.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. Кој SOLID принцип вели дека една класа треба да има само една единствена причина за промена?</div>
+            <div class="options">
+                <div class="option">А) Open-Closed Principle (OCP)</div>
+                <div class="option correct">Б) Single Responsibility Principle (SRP)</div>
+                <div class="option">В) Liskov Substitution Principle (LSP)</div>
+                <div class="option">Г) Interface Segregation Principle (ISP)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">11. Кој SOLID принцип инсистира да зависиме од апстракции (интерфејси), а не од конкретни имплементации?</div>
+            <div class="options">
+                <div class="option">А) Single Responsibility Principle (SRP)</div>
+                <div class="option">Б) Open-Closed Principle (OCP)</div>
+                <div class="option">В) Liskov Substitution Principle (LSP)</div>
+                <div class="option correct">Г) Dependency Inversion Principle (DIP)</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">18. Кои од следниве се SOLID принципи?</div>
+            <div class="options">
+                <div class="option">А) Common Closure Principle (CCP)</div>
+                <div class="option correct">Б) Single Responsibility Principle (SRP)</div>
+                <div class="option correct">В) Interface Segregation Principle (ISP)</div>
+                <div class="option correct">Г) Dependency Inversion Principle (DIP)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="sec6">
+        <h2>6. Еволуција на Софтверот & Наследни Системи</h2>
+        <div class="part-title">Дел 1: Single Choice</div>
+
+        <div class="card">
+            <div class="question-text">1. Која фаза од животниот циклус на промени се карактеризира со тоа што системот е во оперативна употреба и континуирано се додаваат нови функционални барања?</div>
+            <div class="options">
+                <div class="option">А) Сервисирање (Servicing)</div>
+                <div class="option">Б) Повлекување (Phase-out)</div>
+                <div class="option correct">В) Еволуција (Evolution)</div>
+                <div class="option">Г) Иницијација (Initiation)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">2. Како се нарекуваат брзите, непланирани промени кои мора да се направат за санирање на критичен безбедносен пропуст или дефект што го блокира бизнисот?</div>
+            <div class="options">
+                <div class="option">А) Функционална еволуција</div>
+                <div class="option">Б) Адаптација на околината</div>
+                <div class="option">В) Поправка на дефекти</div>
+                <div class="option correct">Г) Итни барања за промена (Hotfixes)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">3. Кој закон на Леман вели дека програмите во реална средина мора континуирано да се менуваат, инаку стануваат прогресивно помалку корисни?</div>
+            <div class="options">
+                <div class="option">А) Закон за зголемување на комплексност</div>
+                <div class="option correct">Б) Закон за континуирана промена</div>
+                <div class="option">В) Закон за организациска стабилност</div>
+                <div class="option">Г) Закон за зачувување на разбирливоста</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">5. Што претставуваат Наследни (Legacy) системи?</div>
+            <div class="options">
+                <div class="option">А) Најнови софтверски системи развиени со модерни технологии.</div>
+                <div class="option correct">Б) Стари системи со огромна деловна вредност, но развиени со застарени технологии.</div>
+                <div class="option">В) Системи кои се целосно отфрлени и повеќе не се користат.</div>
+                <div class="option">Г) Привремени прототипови за тестирање на барања.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">7. Кој закон на Леман вели дека комплексноста на системот се зголемува освен ако експлицитно не се преземат акции за нејзино намалување?</div>
+            <div class="options">
+                <div class="option">А) Закон за континуирана промена</div>
+                <div class="option correct">Б) Закон за зголемување на комплексност</div>
+                <div class="option">В) Закон за голема еволуција на системи</div>
+                <div class="option">Г) Закон за организациска стабилност</div>
+            </div>
+        </div>
+
+        <div class="part-title">Дел 2: Multiple Choice</div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">16. Кои од следниве се четирите типа на системски промени?</div>
+            <div class="options">
+                <div class="option correct">А) Поправка на дефекти</div>
+                <div class="option correct">Б) Превентивно одржување</div>
+                <div class="option correct">В) Адаптација на околината</div>
+                <div class="option correct">Г) Итни барања за промена (Hotfixes)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="multiple-badge">ПОВЕЌЕ ТОЧНИ</span>
+            <div class="question-text">18. Кои од следниве се Закони на Леман (Lehman's Laws) за динамика на еволуција?</div>
+            <div class="options">
+                <div class="option correct">А) Закон за континуирана промена</div>
+                <div class="option">Б) Закон за намалување на трошоци</div>
+                <div class="option correct">В) Закон за зголемување на комплексност</div>
+                <div class="option correct">Г) Закон за зачувување на разбирливоста</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
